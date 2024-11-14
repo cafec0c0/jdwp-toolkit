@@ -7,4 +7,4 @@ commands and is compatible with Linux and macOS.
 
 ## Screenshot
 
-![JDWP Toolkit](ttps://raw.githubusercontent.com/cafec0c0/jdwp-toolkit/main/.github/images/jdwp_toolkit_14_11_2024.png)
+![JDWP Toolkit](https://raw.githubusercontent.com/cafec0c0/jdwp-toolkit/main/.github/images/jdwp_toolkit_14_11_2024.png)
