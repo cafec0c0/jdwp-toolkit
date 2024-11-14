@@ -1,10 +1,10 @@
 #ifndef VMCONTROLLER_H
 #define VMCONTROLLER_H
 #include "client/JdwpClientWrapper.h"
+#include "model/Connection.h"
 
 #include <QObject>
 
-class Connection;
 class VmController : public QObject {
   Q_OBJECT
 public:
