@@ -28,6 +28,8 @@ signals:
   void virtualMachineAllThreads(JdwpReply *reply);
   void virtualMachineTopLevelThreadGroups(JdwpReply *reply);
   void virtualMachineIdSizes(JdwpReply *reply);
+  void virtualMachineCreateString(JdwpReply *reply);
+  void virtualMachineCapabilities(JdwpReply *reply);
 
 private:
   bool connected_ = false;

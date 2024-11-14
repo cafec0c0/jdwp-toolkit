@@ -2,10 +2,15 @@
 
 #include "ui/panels/vm/VmAllClassesPanel.h"
 #include "ui/panels/vm/VmAllThreadsPanel.h"
+#include "ui/panels/vm/VmCapabilitiesPanel.h"
 #include "ui/panels/vm/VmClassesBySignaturePanel.h"
+#include "ui/panels/vm/VmCreateStringPanel.h"
 #include "ui/panels/vm/VmDisposePanel.h"
+#include "ui/panels/vm/VmExitPanel.h"
 #include "ui/panels/vm/VmIdSizesPanel.h"
 #include "ui/panels/vm/VmIndexPanel.h"
+#include "ui/panels/vm/VmResumePanel.h"
+#include "ui/panels/vm/VmSuspendPanel.h"
 #include "ui/panels/vm/VmTopLevelThreadGroupsPanel.h"
 
 CommandPanel::CommandPanel(ApplicationContext *ctx, QWidget *parent)
@@ -79,7 +84,16 @@ void CommandPanel::setupVmCommands() {
        {createWidgetItem("Top Level Thread Groups", vmRoot),
         new VmTopLevelThreadGroupsPanel(ctx)}},
       {6, {createWidgetItem("Dispose", vmRoot), new VmDisposePanel(ctx)}},
-      {7, {createWidgetItem("ID Sizes", vmRoot), new VmIdSizesPanel(ctx)}}};
+      {7, {createWidgetItem("ID Sizes", vmRoot), new VmIdSizesPanel(ctx)}},
+      {8, {createWidgetItem("Suspend", vmRoot), new VmSuspendPanel(ctx)}},
+      {9, {createWidgetItem("Resume", vmRoot), new VmResumePanel(ctx)}},
+      {10, {createWidgetItem("Exit", vmRoot), new VmExitPanel(ctx)}},
+      {11,
+       {createWidgetItem("Create String", vmRoot),
+        new VmCreateStringPanel(ctx)}},
+      {12,
+       {createWidgetItem("Capabilities", vmRoot),
+        new VmCapabilitiesPanel(ctx)}}};
 
   for (auto key : vmItems) {
     stack->addWidget(key.second);

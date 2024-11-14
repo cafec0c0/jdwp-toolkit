@@ -1,7 +1,3 @@
-//
-// Created by rogue on 13/11/24.
-//
-
 #include "BasePanel.h"
 
 #include "util/JdwpConstantsMapper.h"

@@ -20,6 +20,11 @@ static QString content =
             "<li><a href=\"index:5\">Top Level Thread Groups</a></li>"
             "<li><a href=\"index:6\">Dispose</a></li>"
             "<li><a href=\"index:7\">Id Sizes</a></li>"
+            "<li><a href=\"index:8\">Suspend</a></li>"
+            "<li><a href=\"index:9\">Resume</a></li>"
+            "<li><a href=\"index:10\">Exit</a></li>"
+            "<li><a href=\"index:11\">Create String</a></li>"
+            "<li><a href=\"index:12\">Capabilities</a></li>"
             "</ul>")
         .arg(docsLink);
 

@@ -1,7 +1,3 @@
-//
-// Created by rogue on 09/11/24.
-//
-
 #include <QTimer>
 
 #include "VmAllThreadsPanel.h"

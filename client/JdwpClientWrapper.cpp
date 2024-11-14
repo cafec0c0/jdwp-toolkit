@@ -59,6 +59,12 @@ void JdwpClientWrapper::handle_callback(JdwpReply *reply, void **state) {
   case JDWP_VIRTUAL_MACHINE_ID_SIZES:
     emit wrapper->virtualMachineIdSizes(reply);
     break;
+  case JDWP_VIRTUAL_MACHINE_CREATE_STRING:
+    emit wrapper->virtualMachineCreateString(reply);
+    break;
+  case JDWP_VIRTUAL_MACHINE_CAPABILITIES:
+    emit wrapper->virtualMachineCapabilities(reply);
+    break;
   default:;
   }
 }

@@ -18,6 +18,9 @@ add_executable(jdwp_toolkit
         main.cpp
 )
 
+target_link_directories(jdwp_toolkit PRIVATE /home/rogue/CLionProjects/libjdwp3/build/)
+target_include_directories(jdwp_toolkit PRIVATE /home/rogue/CLionProjects/libjdwp3/include)
+
 target_link_libraries(jdwp_toolkit
         Qt::Core
         Qt::Gui

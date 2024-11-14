@@ -1,7 +1,3 @@
-//
-// Created by rogue on 08/11/24.
-//
-
 #include "MainWindow.h"
 
 #include "TabsPlaceholder.h"
