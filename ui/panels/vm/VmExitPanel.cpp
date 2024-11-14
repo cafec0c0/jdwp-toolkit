@@ -45,7 +45,7 @@ void VmExitPanel::onReply(JdwpReply *reply) {}
 
 void VmExitPanel::sendCommand() {
   auto client = ctx->vmController()->connection();
-  JdwpVirtualMachineExitCommand cmd{.exit_code = exitCodeEdit->text().toInt()};
+  JdwpVirtualMachineExitCommand cmd{.exit_code = exitCodeEdit->text().toUInt()};
   client->send(&cmd, client->nextId(), JDWP_VIRTUAL_MACHINE_EXIT);
 
   ctx->vmController()->removeConnection();
