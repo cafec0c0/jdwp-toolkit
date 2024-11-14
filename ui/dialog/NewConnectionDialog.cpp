@@ -1,6 +1,7 @@
 #include "NewConnectionDialog.h"
 
 #include "util/JdwpConstantsMapper.h"
+
 NewConnectionDialog::NewConnectionDialog(ApplicationContext *ctx,
                                          QWidget *parent)
     : QDialog(parent) {
