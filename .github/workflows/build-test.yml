@@ -23,7 +23,7 @@ jobs:
       - name: Build libjdwp
         run: cd libjdwp && cmake -B build -DCMAKE-BUILD_TYPE=Release && cmake --build build --target jdwp && cd ..
       - name: Configure JDWP Toolkit
-        run: cmake -B build -DCMAKE_CXX_FLAGS="-I./libjdwp/include -L./libjdwp/build"
+        run: cmake -B build -DCMAKE_CXX_FLAGS="-I${{ github.workspace }}/libjdwp/include -L${{ github.workspace }}/libjdwp/build"
       - name: Build library
         run: cmake --build build
 
