@@ -68,14 +68,14 @@ void VmAllClassesPanel::onReply(JdwpReply *reply) {
 
       auto *rtt = new QTableWidgetItem(
           JdwpConstantsMapper::getTypeTagString(d.ref_type_tag));
-      // rtt->setFlags(rtt->flags() ^ Qt::ItemIsEditable);
+      rtt->setFlags(rtt->flags() ^ Qt::ItemIsEditable);
       auto *id = new QTableWidgetItem(QString::number(d.type_id));
-      // id->setFlags(id->flags() ^ Qt::ItemIsEditable);
+      id->setFlags(id->flags() ^ Qt::ItemIsEditable);
       auto *sig = new QTableWidgetItem(QString(d.signature));
-      // sig->setFlags(sig->flags() ^ Qt::ItemIsEditable);
+      sig->setFlags(sig->flags() ^ Qt::ItemIsEditable);
       auto *status =
           new QTableWidgetItem(JdwpConstantsMapper::getStatusString(d.status));
-      // status->setFlags(status->flags() ^ Qt::ItemIsEditable);
+      status->setFlags(status->flags() ^ Qt::ItemIsEditable);
 
       classesTree->setItem(i, 0, rtt);
       classesTree->setItem(i, 1, id);

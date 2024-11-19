@@ -26,7 +26,9 @@ VmTopLevelThreadGroupsPanel::VmTopLevelThreadGroupsPanel(
   setupConnections();
 }
 void VmTopLevelThreadGroupsPanel::onReply(JdwpReply *reply) {
+  qDebug() << "recv";
   if (reply->data) {
+    qDebug() << "has data";
     auto *data =
         static_cast<JdwpVirtualMachineTopLevelThreadGroupsData *>(reply->data);
 
@@ -46,9 +48,13 @@ void VmTopLevelThreadGroupsPanel::onReply(JdwpReply *reply) {
 }
 
 void VmTopLevelThreadGroupsPanel::sendCommand() {
+  qDebug() << "sending";
   auto client = ctx->vmController()->connection();
-  client->send(nullptr, client->nextId(),
-               JDWP_VIRTUAL_MACHINE_TOP_LEVEL_THREAD_GROUPS);
+  qDebug() << "client" << client;
+
+  auto e = client->send(nullptr, client->nextId(),
+                        JDWP_VIRTUAL_MACHINE_TOP_LEVEL_THREAD_GROUPS);
+  qDebug() << "send err:" << e;
 }
 
 QString VmTopLevelThreadGroupsPanel::getPanelTitle() {
