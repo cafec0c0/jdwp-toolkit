@@ -18,14 +18,14 @@ NewConnectionDialog::NewConnectionDialog(ApplicationContext *ctx,
   errorLabel = new QLabel();
   descriptionLabel = new QLabel("<h3>New Connection</h3>");
 
-  formLayout->setSizeConstraint(QLayout::SetNoConstraint);
-
   errorLabel->setAlignment(Qt::AlignTop);
   errorLabel->setMinimumHeight(50);
   errorLabel->setSizePolicy(QSizePolicy::MinimumExpanding,
                             QSizePolicy::MinimumExpanding);
   errorLabel->setWordWrap(true);
   errorLabel->setStyleSheet("text-transform: capitalize");
+
+  setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 
   formLayout->addRow(descriptionLabel);
   formLayout->addRow("Name", nameField);
