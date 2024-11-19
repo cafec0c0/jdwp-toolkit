@@ -28,7 +28,6 @@ BasePanel::BasePanel(const QString &title, QWidget *parent) {
   layout->setContentsMargins(0, 0, 0, 0);
   buttonLayout->setAlignment(Qt::AlignRight);
 
-  // helpButton->setMaximumSize(30, 30);
   helpButton->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   helpButton->setToolTip("Help");
 

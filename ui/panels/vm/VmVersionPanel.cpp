@@ -15,6 +15,8 @@ VmVersionPanel::VmVersionPanel(ApplicationContext *ctx, QWidget *parent)
 
   descriptionArea->setReadOnly(true);
   descriptionArea->setMinimumHeight(0);
+  descriptionArea->setSizePolicy(QSizePolicy::MinimumExpanding,
+                                 QSizePolicy::Maximum);
   majorVersionLabel->setReadOnly(true);
   minorVersionLabel->setReadOnly(true);
   vmVersionLabel->setReadOnly(true);
