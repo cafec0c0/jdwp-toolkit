@@ -21,12 +21,11 @@ NewConnectionDialog::NewConnectionDialog(ApplicationContext *ctx,
   errorLabel->setAlignment(Qt::AlignTop);
   errorLabel->setMinimumHeight(50);
   errorLabel->setSizePolicy(QSizePolicy::MinimumExpanding,
-                            QSizePolicy::Maximum);
+                            QSizePolicy::MinimumExpanding);
   errorLabel->setWordWrap(true);
   errorLabel->setStyleSheet("text-transform: capitalize");
 
   formLayout->addRow(descriptionLabel);
-  nameField->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Maximum);
   formLayout->addRow("Name", nameField);
   formLayout->addRow("Host", hostField);
   formLayout->addRow("Port", portField);
