@@ -26,8 +26,7 @@ NewConnectionDialog::NewConnectionDialog(ApplicationContext *ctx,
   errorLabel->setStyleSheet("text-transform: capitalize");
 
   formLayout->addRow(descriptionLabel);
-  nameField->setSizePolicy(QSizePolicy::MinimumExpanding,
-                           QSizePolicy::MinimumExpanding);
+  nameField->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Maximum);
   formLayout->addRow("Name", nameField);
   formLayout->addRow("Host", hostField);
   formLayout->addRow("Port", portField);
