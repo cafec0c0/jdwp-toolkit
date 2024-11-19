@@ -18,7 +18,7 @@ NewConnectionDialog::NewConnectionDialog(ApplicationContext *ctx,
   errorLabel = new QLabel();
   descriptionLabel = new QLabel("<h3>New Connection</h3>");
 
-  nameField->resize(400, 50);
+  formLayout->setSizeConstraint(QLayout::SetNoConstraint);
 
   errorLabel->setAlignment(Qt::AlignTop);
   errorLabel->setMinimumHeight(50);
