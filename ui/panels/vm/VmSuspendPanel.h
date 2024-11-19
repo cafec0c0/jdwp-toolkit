@@ -30,7 +30,6 @@ private:
   QLabel *noErrorLabel;
 
   ApplicationContext *ctx;
-  JdwpVirtualMachineVersionData *versionData = nullptr;
 };
 
 #endif // VMSUSPENDPANEL_H

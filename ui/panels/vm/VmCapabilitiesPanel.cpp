@@ -1,8 +1,13 @@
 
 #include "VmCapabilitiesPanel.h"
 
+#include "ui/panels/BasePanel.h"
 #include "util/JdwpConstantsMapper.h"
 #include "util/UrlMapper.h"
+
+#include <QHeaderView>
+#include <QStringList>
+
 VmCapabilitiesPanel::VmCapabilitiesPanel(ApplicationContext *ctx,
                                          QWidget *parent)
     : BasePanel(VmCapabilitiesPanel::getPanelTitle(), parent), ctx(ctx) {
@@ -10,41 +15,16 @@ VmCapabilitiesPanel::VmCapabilitiesPanel(ApplicationContext *ctx,
   noArgsLabel = new QLabel("This command does not take any out data.");
   inputLayout->addRow(noArgsLabel);
 
-  hbox = new QHBoxLayout();
-  leftLayout = new QFormLayout();
-  rightLayout = new QFormLayout();
-  hbox->addLayout(leftLayout);
-  hbox->addLayout(rightLayout);
+  capabilitiesTable = new QTableWidget();
+  capabilitiesTable->setColumnCount(2);
+  capabilitiesTable->setRowCount(7);
+  capabilitiesTable->setHorizontalHeaderLabels(QStringList() << "Capability"
+                                                             << "Present");
+  capabilitiesTable->horizontalHeader()->setStretchLastSection(true);
+  capabilitiesTable->verticalHeader()->setVisible(false);
+  setupTable();
 
-  hbox->setAlignment(Qt::AlignLeft);
-
-  outputLayout->addRow(hbox);
-
-  canWatchFieldModificationCheck = new QCheckBox();
-  canWatchFieldModificationCheck->setEnabled(false);
-  canWatchFieldAccessCheck = new QCheckBox();
-  canWatchFieldAccessCheck->setEnabled(false);
-  canGetBytecodesCheck = new QCheckBox();
-  canGetBytecodesCheck->setEnabled(false);
-  canGetSyntheticAttributeCheck = new QCheckBox();
-  canGetSyntheticAttributeCheck->setEnabled(false);
-  canGetOwnedMonitorInfoCheck = new QCheckBox();
-  canGetOwnedMonitorInfoCheck->setEnabled(false);
-  canGetCurrentContendedMonitorCheck = new QCheckBox();
-  canGetCurrentContendedMonitorCheck->setEnabled(false);
-  canGetMonitorInfoCheck = new QCheckBox();
-  canGetMonitorInfoCheck->setEnabled(false);
-
-  leftLayout->addRow("canWatchFieldModification",
-                     canWatchFieldModificationCheck);
-  leftLayout->addRow("canWatchFieldAccess", canWatchFieldAccessCheck);
-  leftLayout->addRow("canGetBytecodes", canGetBytecodesCheck);
-  leftLayout->addRow("canGetSyntheticAttribute", canGetSyntheticAttributeCheck);
-  rightLayout->addRow("canGetOwnedMonitorInfo", canGetOwnedMonitorInfoCheck);
-  rightLayout->addRow("canGetCurrentContendedMonitor",
-                      canGetCurrentContendedMonitorCheck);
-  rightLayout->addRow("canGetMonitorInfo", canGetMonitorInfoCheck);
-
+  outputLayout->addRow("Capabilities", capabilitiesTable);
   setupConnections();
 }
 
@@ -76,34 +56,48 @@ void VmCapabilitiesPanel::setupConnections() {
             &VmCapabilitiesPanel::onReply);
   });
 }
+void VmCapabilitiesPanel::setupTable() {
+  QStringList capabilities = QStringList() << "canWatchFieldModification"
+                                           << "canWatchFieldAccess"
+                                           << "canGetBytecodes"
+                                           << "canGetSyntheticAttribute"
+                                           << "canGetOwnedMonitorInfo"
+                                           << "canGetCurrentContendedMonitor"
+                                           << "canGetMonitorInfo";
+
+  for (int i = 0; i < capabilities.size(); i++) {
+    auto t = new QTableWidgetItem(capabilities[i]);
+    t->setFlags(t->flags() ^ Qt::ItemIsEditable);
+    capabilitiesTable->setItem(i, 0, t);
+  }
+
+  capabilitiesTable->resizeColumnsToContents();
+}
+void VmCapabilitiesPanel::insertValue(int row, bool value) {
+  auto t = new QTableWidgetItem(value ? "Yes" : "No");
+  t->setFlags(t->flags() ^ Qt::ItemIsEditable);
+  capabilitiesTable->setItem(row, 1, t);
+}
 
 void VmCapabilitiesPanel::onReply(JdwpReply *reply) {
   if (reply->data) {
     auto *data = static_cast<JdwpVirtualMachineCapabilitiesData *>(reply->data);
-    canWatchFieldModificationCheck->setChecked(
-        data->can_watch_field_modification);
-    canWatchFieldAccessCheck->setChecked(data->can_watch_field_access);
-    canGetBytecodesCheck->setChecked(data->can_get_bytecodes);
-    canGetSyntheticAttributeCheck->setChecked(
-        data->can_get_synthetic_attribute);
-    canGetOwnedMonitorInfoCheck->setChecked(data->can_get_owned_monitor_info);
-    canGetCurrentContendedMonitorCheck->setChecked(
-        data->can_get_current_contended_monitor);
-    canGetMonitorInfoCheck->setChecked(data->can_get_monitor_info);
+    insertValue(0, data->can_watch_field_modification);
+    insertValue(1, data->can_watch_field_access);
+    insertValue(2, data->can_get_bytecodes);
+    insertValue(3, data->can_get_synthetic_attribute);
+    insertValue(4, data->can_get_owned_monitor_info);
+    insertValue(5, data->can_get_current_contended_monitor);
+    insertValue(6, data->can_get_monitor_info);
   } else {
-    canWatchFieldModificationCheck->setChecked(false);
-    canWatchFieldAccessCheck->setChecked(false);
-    canGetBytecodesCheck->setChecked(false);
-    canGetSyntheticAttributeCheck->setChecked(false);
-    canGetOwnedMonitorInfoCheck->setChecked(false);
-    canGetCurrentContendedMonitorCheck->setChecked(false);
-    canGetMonitorInfoCheck->setChecked(false);
+    for (int i = 0; i < 7; i++) {
+      insertValue(0, false);
+    }
   }
   setJdwpError(reply->error);
 }
 
 void VmCapabilitiesPanel::sendCommand() {
   auto client = ctx->vmController()->connection();
-  JdwpVirtualMachineCapabilitiesCommand cmd;
-  client->send(&cmd, client->nextId(), JDWP_VIRTUAL_MACHINE_CAPABILITIES);
+  client->send(nullptr, client->nextId(), JDWP_VIRTUAL_MACHINE_CAPABILITIES);
 }

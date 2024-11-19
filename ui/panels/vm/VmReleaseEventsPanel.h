@@ -1,5 +1,5 @@
-#ifndef VMDISPOSEPANEL_H
-#define VMDISPOSEPANEL_H
+#ifndef VMRELEASEEVENTSPANEL_H
+#define VMRELEASEEVENTSPANEL_H
 #include "ApplicationContext.h"
 
 #include "jdwp.h"
@@ -9,11 +9,12 @@
 #include <QLineEdit>
 #include <QTextEdit>
 
-class VmDisposePanel : public BasePanel {
+class VmReleaseEventsPanel : public BasePanel {
   Q_OBJECT
 
 public:
-  explicit VmDisposePanel(ApplicationContext *ctx, QWidget *parent = nullptr);
+  explicit VmReleaseEventsPanel(ApplicationContext *ctx,
+                                QWidget *parent = nullptr);
 
 private slots:
   void onReply(JdwpReply *reply) override;
@@ -32,4 +33,4 @@ private:
   ApplicationContext *ctx;
 };
 
-#endif // VMDISPOSEPANEL_H
+#endif // VMRELEASEEVENTSPANEL_H

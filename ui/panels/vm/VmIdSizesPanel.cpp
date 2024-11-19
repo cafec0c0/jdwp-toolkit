@@ -78,6 +78,5 @@ void VmIdSizesPanel::onReply(JdwpReply *reply) {
 
 void VmIdSizesPanel::sendCommand() {
   auto client = ctx->vmController()->connection();
-  JdwpVirtualMachineIdSizesCommand cmd;
-  client->send(&cmd, client->nextId(), JDWP_VIRTUAL_MACHINE_ID_SIZES);
+  client->send(nullptr, client->nextId(), JDWP_VIRTUAL_MACHINE_ID_SIZES);
 }

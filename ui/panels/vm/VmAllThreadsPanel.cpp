@@ -44,8 +44,7 @@ void VmAllThreadsPanel::onReply(JdwpReply *reply) {
 
 void VmAllThreadsPanel::sendCommand() {
   auto client = ctx->vmController()->connection();
-  JdwpVirtualMachineAllThreadsCommand cmd;
-  client->send(&cmd, client->nextId(), JDWP_VIRTUAL_MACHINE_ALL_THREADS);
+  client->send(nullptr, client->nextId(), JDWP_VIRTUAL_MACHINE_ALL_THREADS);
 }
 
 QString VmAllThreadsPanel::getPanelTitle() {

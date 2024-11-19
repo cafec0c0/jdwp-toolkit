@@ -1,5 +1,5 @@
-#ifndef VMDISPOSEPANEL_H
-#define VMDISPOSEPANEL_H
+#ifndef VMDISPOSEOBJECTSPANEL_H
+#define VMDISPOSEOBJECTSPANEL_H
 #include "ApplicationContext.h"
 
 #include "jdwp.h"
@@ -7,17 +7,22 @@
 
 #include <QLabel>
 #include <QLineEdit>
+#include <QTableWidget>
 #include <QTextEdit>
 
-class VmDisposePanel : public BasePanel {
+class QTableWidget;
+class VmDisposeObjectsPanel : public BasePanel {
   Q_OBJECT
 
 public:
-  explicit VmDisposePanel(ApplicationContext *ctx, QWidget *parent = nullptr);
+  explicit VmDisposeObjectsPanel(ApplicationContext *ctx,
+                                 QWidget *parent = nullptr);
 
 private slots:
   void onReply(JdwpReply *reply) override;
   void sendCommand() override;
+  void addRow();
+  void deleteRow();
 
 private:
   QString getPanelTitle() override;
@@ -25,11 +30,13 @@ private:
   QString getHelpUrl() override;
   void setupConnections();
 
-  QLabel *noArgsLabel;
+  QPushButton *newRowButton;
+  QPushButton *deleteRowButton;
+  QTableWidget *objectList;
   QLabel *noOutputLabel;
   QLabel *noErrorLabel;
 
   ApplicationContext *ctx;
 };
 
-#endif // VMDISPOSEPANEL_H
+#endif // VMDISPOSEOBJECTSPANEL_H

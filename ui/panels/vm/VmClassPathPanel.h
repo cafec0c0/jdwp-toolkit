@@ -1,19 +1,21 @@
-#ifndef VMDISPOSEPANEL_H
-#define VMDISPOSEPANEL_H
+#ifndef VMCLASSPATH_H
+#define VMCLASSPATH_H
 #include "ApplicationContext.h"
 
 #include "jdwp.h"
 #include "ui/panels/BasePanel.h"
 
+#include <QFormLayout>
 #include <QLabel>
 #include <QLineEdit>
+#include <QTableWidget>
 #include <QTextEdit>
 
-class VmDisposePanel : public BasePanel {
+class VmClassPathPanel : public BasePanel {
   Q_OBJECT
 
 public:
-  explicit VmDisposePanel(ApplicationContext *ctx, QWidget *parent = nullptr);
+  explicit VmClassPathPanel(ApplicationContext *ctx, QWidget *parent = nullptr);
 
 private slots:
   void onReply(JdwpReply *reply) override;
@@ -26,10 +28,11 @@ private:
   void setupConnections();
 
   QLabel *noArgsLabel;
-  QLabel *noOutputLabel;
-  QLabel *noErrorLabel;
+  QLineEdit *baseDirEdit;
+  QTableWidget *classPathsTree;
+  QTableWidget *bootClassPathsTree;
 
   ApplicationContext *ctx;
 };
 
-#endif // VMDISPOSEPANEL_H
+#endif // VMCLASSPATH_H

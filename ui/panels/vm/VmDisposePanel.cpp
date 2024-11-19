@@ -55,8 +55,7 @@ void VmDisposePanel::onReply(JdwpReply *reply) {}
 
 void VmDisposePanel::sendCommand() {
   auto client = ctx->vmController()->connection();
-  JdwpVirtualMachineDisposeCommand cmd;
-  client->send(&cmd, client->nextId(), JDWP_VIRTUAL_MACHINE_DISPOSE);
+  client->send(nullptr, client->nextId(), JDWP_VIRTUAL_MACHINE_DISPOSE);
 
   ctx->vmController()->removeConnection();
 }

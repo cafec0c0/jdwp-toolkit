@@ -25,6 +25,11 @@ static QString content =
             "<li><a href=\"index:10\">Exit</a></li>"
             "<li><a href=\"index:11\">Create String</a></li>"
             "<li><a href=\"index:12\">Capabilities</a></li>"
+            "<li><a href=\"index:13\">Class Paths</a></li>"
+            "<li><a href=\"index:14\">Dispose Objects</a></li>"
+            "<li><a href=\"index:15\">Hold Events</a></li>"
+            "<li><a href=\"index:16\">Release Events</a></li>"
+            "<li><a href=\"index:17\">Capabilities New</a></li>"
             "</ul>")
         .arg(docsLink);
 

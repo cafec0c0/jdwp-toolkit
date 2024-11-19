@@ -1,22 +1,24 @@
-#ifndef VMALLCLASSES_H
-#define VMALLCLASSES_H
+#ifndef VMCAPABILITIESNEW_H
+#define VMCAPABILITIESNEW_H
 #include "ApplicationContext.h"
 
 #include "jdwp.h"
 #include "ui/panels/BasePanel.h"
 
+#include <QCheckBox>
 #include <QFormLayout>
 #include <QLabel>
 #include <QLineEdit>
 #include <QTableWidget>
 #include <QTextEdit>
+#include <QVBoxLayout>
 
-class VmAllClassesPanel : public BasePanel {
+class VmCapabilitiesNewPanel : public BasePanel {
   Q_OBJECT
 
 public:
-  explicit VmAllClassesPanel(ApplicationContext *ctx,
-                             QWidget *parent = nullptr);
+  explicit VmCapabilitiesNewPanel(ApplicationContext *ctx,
+                                  QWidget *parent = nullptr);
 
 private slots:
   void onReply(JdwpReply *reply) override;
@@ -27,11 +29,18 @@ private:
   QString getHelpText() override;
   QString getHelpUrl() override;
   void setupConnections();
+  void setupTable();
+  void insertValue(int row, bool value);
 
   QLabel *noArgsLabel;
-  QTableWidget *classesTree;
+
+  QHBoxLayout *hbox;
+  QFormLayout *leftLayout;
+  QFormLayout *rightLayout;
+
+  QTableWidget *capabilitiesTable;
 
   ApplicationContext *ctx;
 };
 
-#endif // VMALLCLASSES_H
+#endif // VMCAPABILITIESNEW_H

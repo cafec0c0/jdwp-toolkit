@@ -65,6 +65,12 @@ void JdwpClientWrapper::handle_callback(JdwpReply *reply, void **state) {
   case JDWP_VIRTUAL_MACHINE_CAPABILITIES:
     emit wrapper->virtualMachineCapabilities(reply);
     break;
+  case JDWP_VIRTUAL_MACHINE_CLASS_PATHS:
+    emit wrapper->virtualMachineClassPaths(reply);
+    break;
+  case JDWP_VIRTUAL_MACHINE_CAPABILITIES_NEW:
+    emit wrapper->virtualMachineCapabilitiesNew(reply);
+    break;
   default:;
   }
 }

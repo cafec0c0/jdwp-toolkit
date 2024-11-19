@@ -6,13 +6,10 @@
 #include "ui/panels/BasePanel.h"
 
 #include <QFormLayout>
-#include <QGroupBox>
 #include <QLabel>
 #include <QLineEdit>
-#include <QPushButton>
 #include <QTableWidget>
 #include <QTextEdit>
-#include <QVBoxLayout>
 
 class VmAllThreadsPanel : public BasePanel {
   Q_OBJECT
@@ -35,7 +32,6 @@ private:
   QTableWidget *threadsTree;
 
   ApplicationContext *ctx;
-  JdwpVirtualMachineVersionData *versionData = nullptr;
 };
 
 #endif // VMALLTHREADS_H

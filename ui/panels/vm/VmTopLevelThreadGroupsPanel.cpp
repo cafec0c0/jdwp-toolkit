@@ -47,8 +47,7 @@ void VmTopLevelThreadGroupsPanel::onReply(JdwpReply *reply) {
 
 void VmTopLevelThreadGroupsPanel::sendCommand() {
   auto client = ctx->vmController()->connection();
-  JdwpVirtualMachineTopLevelThreadGroupsCommand cmd;
-  client->send(&cmd, client->nextId(),
+  client->send(nullptr, client->nextId(),
                JDWP_VIRTUAL_MACHINE_TOP_LEVEL_THREAD_GROUPS);
 }
 

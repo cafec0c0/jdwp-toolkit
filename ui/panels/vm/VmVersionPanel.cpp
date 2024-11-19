@@ -75,6 +75,5 @@ void VmVersionPanel::onReply(JdwpReply *reply) {
 
 void VmVersionPanel::sendCommand() {
   auto client = ctx->vmController()->connection();
-  JdwpVirtualMachineVersionCommand cmd;
-  client->send(&cmd, client->nextId(), JDWP_VIRTUAL_MACHINE_VERSION);
+  client->send(nullptr, client->nextId(), JDWP_VIRTUAL_MACHINE_VERSION);
 }

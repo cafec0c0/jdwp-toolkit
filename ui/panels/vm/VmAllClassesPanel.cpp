@@ -29,8 +29,7 @@ VmAllClassesPanel::VmAllClassesPanel(ApplicationContext *ctx, QWidget *parent)
 
 void VmAllClassesPanel::sendCommand() {
   auto client = ctx->vmController()->connection();
-  JdwpVirtualMachineAllClassesCommand cmd;
-  client->send(&cmd, client->nextId(), JDWP_VIRTUAL_MACHINE_ALL_CLASSES);
+  client->send(nullptr, client->nextId(), JDWP_VIRTUAL_MACHINE_ALL_CLASSES);
 }
 QString VmAllClassesPanel::getPanelTitle() {
   return "Virtual Machine :: All Classes";

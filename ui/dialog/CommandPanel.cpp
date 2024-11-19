@@ -2,13 +2,18 @@
 
 #include "ui/panels/vm/VmAllClassesPanel.h"
 #include "ui/panels/vm/VmAllThreadsPanel.h"
+#include "ui/panels/vm/VmCapabilitiesNewPanel.h"
 #include "ui/panels/vm/VmCapabilitiesPanel.h"
+#include "ui/panels/vm/VmClassPathPanel.h"
 #include "ui/panels/vm/VmClassesBySignaturePanel.h"
 #include "ui/panels/vm/VmCreateStringPanel.h"
+#include "ui/panels/vm/VmDisposeObjectsPanel.h"
 #include "ui/panels/vm/VmDisposePanel.h"
 #include "ui/panels/vm/VmExitPanel.h"
+#include "ui/panels/vm/VmHoldEventsPanel.h"
 #include "ui/panels/vm/VmIdSizesPanel.h"
 #include "ui/panels/vm/VmIndexPanel.h"
+#include "ui/panels/vm/VmReleaseEventsPanel.h"
 #include "ui/panels/vm/VmResumePanel.h"
 #include "ui/panels/vm/VmSuspendPanel.h"
 #include "ui/panels/vm/VmTopLevelThreadGroupsPanel.h"
@@ -93,7 +98,20 @@ void CommandPanel::setupVmCommands() {
         new VmCreateStringPanel(ctx)}},
       {12,
        {createWidgetItem("Capabilities", vmRoot),
-        new VmCapabilitiesPanel(ctx)}}};
+        new VmCapabilitiesPanel(ctx)}},
+      {13,
+       {createWidgetItem("Class Paths", vmRoot), new VmClassPathPanel(ctx)}},
+      {14,
+       {createWidgetItem("Dispose Objects", vmRoot),
+        new VmDisposeObjectsPanel(ctx)}},
+      {15,
+       {createWidgetItem("Hold Events", vmRoot), new VmHoldEventsPanel(ctx)}},
+      {16,
+       {createWidgetItem("Release Events", vmRoot),
+        new VmReleaseEventsPanel(ctx)}},
+      {17,
+       {createWidgetItem("Capabilities New", vmRoot),
+        new VmCapabilitiesNewPanel(ctx)}}};
 
   for (auto key : vmItems) {
     stack->addWidget(key.second);

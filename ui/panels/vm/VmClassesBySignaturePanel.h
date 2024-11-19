@@ -6,13 +6,10 @@
 #include "ui/panels/BasePanel.h"
 
 #include <QFormLayout>
-#include <QGroupBox>
 #include <QLabel>
 #include <QLineEdit>
-#include <QPushButton>
 #include <QTableWidget>
 #include <QTextEdit>
-#include <QVBoxLayout>
 
 class VmClassesBySignaturePanel : public BasePanel {
   Q_OBJECT
@@ -36,7 +33,6 @@ private:
   QTableWidget *classesTree;
 
   ApplicationContext *ctx;
-  JdwpVirtualMachineVersionData *versionData = nullptr;
 };
 
 #endif // VMCLASSESBYSIGNATUREL_H

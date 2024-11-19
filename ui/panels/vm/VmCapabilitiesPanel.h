@@ -7,10 +7,8 @@
 
 #include <QCheckBox>
 #include <QFormLayout>
-#include <QGroupBox>
 #include <QLabel>
 #include <QLineEdit>
-#include <QPushButton>
 #include <QTableWidget>
 #include <QTextEdit>
 #include <QVBoxLayout>
@@ -31,6 +29,8 @@ private:
   QString getHelpText() override;
   QString getHelpUrl() override;
   void setupConnections();
+  void setupTable();
+  void insertValue(int row, bool value);
 
   QLabel *noArgsLabel;
 
@@ -38,16 +38,9 @@ private:
   QFormLayout *leftLayout;
   QFormLayout *rightLayout;
 
-  QCheckBox *canWatchFieldModificationCheck;
-  QCheckBox *canWatchFieldAccessCheck;
-  QCheckBox *canGetBytecodesCheck;
-  QCheckBox *canGetSyntheticAttributeCheck;
-  QCheckBox *canGetOwnedMonitorInfoCheck;
-  QCheckBox *canGetCurrentContendedMonitorCheck;
-  QCheckBox *canGetMonitorInfoCheck;
+  QTableWidget *capabilitiesTable;
 
   ApplicationContext *ctx;
-  JdwpVirtualMachineVersionData *versionData = nullptr;
 };
 
 #endif // VMCAPABILITIES_H

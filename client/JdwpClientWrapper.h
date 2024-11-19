@@ -30,6 +30,8 @@ signals:
   void virtualMachineIdSizes(JdwpReply *reply);
   void virtualMachineCreateString(JdwpReply *reply);
   void virtualMachineCapabilities(JdwpReply *reply);
+  void virtualMachineClassPaths(JdwpReply *reply);
+  void virtualMachineCapabilitiesNew(JdwpReply *reply);
 
 private:
   bool connected_ = false;

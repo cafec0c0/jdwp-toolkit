@@ -34,7 +34,6 @@ private:
   QLineEdit *frameIdSize;
 
   ApplicationContext *ctx;
-  JdwpVirtualMachineVersionData *versionData = nullptr;
 };
 
 #endif // VMIDSIZESPANEL_H

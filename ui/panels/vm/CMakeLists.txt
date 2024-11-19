@@ -13,4 +13,9 @@ target_sources(jdwp_toolkit PRIVATE
         VmExitPanel.cpp VmExitPanel.h
         VmCreateStringPanel.cpp VmCreateStringPanel.h
         VmCapabilitiesPanel.cpp VmCapabilitiesPanel.h
+        VmClassPathPanel.cpp VmClassPathPanel.h
+        VmDisposeObjectsPanel.cpp VmDisposeObjectsPanel.h
+        VmHoldEventsPanel.cpp VmHoldEventsPanel.h
+        VmReleaseEventsPanel.cpp VmReleaseEventsPanel.h
+        VmCapabilitiesNewPanel.cpp VmCapabilitiesNewPanel.h
 )

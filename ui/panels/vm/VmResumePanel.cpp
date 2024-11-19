@@ -41,6 +41,5 @@ void VmResumePanel::onReply(JdwpReply *reply) {}
 
 void VmResumePanel::sendCommand() {
   auto client = ctx->vmController()->connection();
-  JdwpVirtualMachineResumeCommand cmd;
-  client->send(&cmd, client->nextId(), JDWP_VIRTUAL_MACHINE_RESUME);
+  client->send(nullptr, client->nextId(), JDWP_VIRTUAL_MACHINE_RESUME);
 }

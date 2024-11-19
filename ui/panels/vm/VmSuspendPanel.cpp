@@ -44,6 +44,5 @@ void VmSuspendPanel::onReply(JdwpReply *reply) {}
 
 void VmSuspendPanel::sendCommand() {
   auto client = ctx->vmController()->connection();
-  JdwpVirtualMachineSuspendCommand cmd;
-  client->send(&cmd, client->nextId(), JDWP_VIRTUAL_MACHINE_SUSPEND);
+  client->send(nullptr, client->nextId(), JDWP_VIRTUAL_MACHINE_SUSPEND);
 }
