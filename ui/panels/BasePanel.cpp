@@ -14,7 +14,7 @@ BasePanel::BasePanel(const QString &title, QWidget *parent) {
 
   titleLabel = new QLabel(QString("<h3>%1</h3>").arg(title));
   errorLabel = new QLineEdit();
-  helpButton = new QPushButton("?");
+  helpButton = new QPushButton("Help");
   sendButton = new QPushButton("Send");
 
   inputGroupBox = new QGroupBox("Out Data");
@@ -28,7 +28,7 @@ BasePanel::BasePanel(const QString &title, QWidget *parent) {
   layout->setContentsMargins(0, 0, 0, 0);
   buttonLayout->setAlignment(Qt::AlignRight);
 
-  helpButton->setMaximumSize(30, 30);
+  // helpButton->setMaximumSize(30, 30);
   helpButton->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   helpButton->setToolTip("Help");
 
