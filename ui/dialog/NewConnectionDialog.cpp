@@ -27,7 +27,7 @@ NewConnectionDialog::NewConnectionDialog(ApplicationContext *ctx,
 
   setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 
-  nameField->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+  nameField->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 
   formLayout->addRow(descriptionLabel);
   formLayout->addRow("Name", nameField);
